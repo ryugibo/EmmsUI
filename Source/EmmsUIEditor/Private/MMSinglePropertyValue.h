@@ -5,6 +5,7 @@
 #include "Modules/ModuleManager.h"
 #include "PropertyEditorModule.h"
 #include "ISinglePropertyView.h"
+#include "PropertyHandle.h"
 #include "MMSinglePropertyValue.generated.h"
 
 UCLASS(MinimalAPI)
