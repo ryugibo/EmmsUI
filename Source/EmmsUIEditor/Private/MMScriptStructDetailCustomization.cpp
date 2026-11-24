@@ -424,7 +424,7 @@ void UMMScriptStructDetailCustomization::Tick(float DeltaTime)
 	if (!IsValid(this) || IsUnreachable() || Wrapper == nullptr)
 		return;
 
-	if (GetClass()->ScriptTypePtr != nullptr)
+	if (GetClass()->ScriptTypePtr != nullptr && !GetClass()->HasAnyClassFlags(CLASS_Native))
 	{
 		if (HasStructValue())
 		{

@@ -53,7 +53,7 @@ void UMMClassDetailCustomization::Tick(float DeltaTime)
 	if (!IsValid(this) || IsUnreachable())
 		return;
 
-	if (GetClass()->ScriptTypePtr != nullptr) 
+	if (GetClass()->ScriptTypePtr != nullptr && !GetClass()->HasAnyClassFlags(CLASS_Native)) 
 	{
 		FEditorScriptExecutionGuard ScopeAllowScript;
 		BP_Tick(DeltaTime);

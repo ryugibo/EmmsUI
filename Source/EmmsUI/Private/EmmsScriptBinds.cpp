@@ -91,7 +91,7 @@ AS_FORCE_LINK const FAngelscriptBinds::FBind Bind_EmmsWidgets((int32)FAngelscrip
 			continue;
 		if (!Class->HasAllClassFlags(CLASS_Native))
 			continue;
-		if (!FAngelscriptType::GetByClass(Class).IsValid())
+		if (!FAngelscriptTypeUsage::FromClass(Class).IsValid())
 			continue;
 
 		if (Class->IsChildOf(UWidget::StaticClass()))
@@ -408,8 +408,8 @@ AS_FORCE_LINK const FAngelscriptBinds::FBind Bind_EmmsWidgets((int32)FAngelscrip
 			SCRIPT_BIND_DOCUMENTATION("Begin drawing immediate widgets to the game or editor viewport. Must be matched by an EndDraw() call after you are done");
 
 			auto* ScriptFunction = (asCScriptFunction*)FAngelscriptBinds::GetPreviousBind();
-			ScriptFunction->hiddenArgumentIndex = 0;
-			ScriptFunction->hiddenArgumentDefault = "__WorldContext";
+			ScriptFunction->CompileData->hiddenArgumentIndex = 0;
+			ScriptFunction->CompileData->hiddenArgumentDefault = "__WorldContext";
 		}
 
 		FAngelscriptBinds::BindGlobalFunction("mm<UPanelWidget> Begin(const TSubclassOf<UPanelWidget>& PanelType)", &UEmmsStatics::BeginWidget);
@@ -452,7 +452,7 @@ AS_FORCE_LINK const FAngelscriptBinds::FBind Bind_EmmsImplicitHeirarchy((int32)F
 			continue;
 		if (!Class->HasAllClassFlags(CLASS_Native))
 			continue;
-		if (!FAngelscriptType::GetByClass(Class).IsValid())
+		if (!FAngelscriptTypeUsage::FromClass(Class).IsValid())
 			continue;
 
 		if (!Class->IsChildOf(UPanelWidget::StaticClass()))

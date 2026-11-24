@@ -117,6 +117,7 @@ FEmmsWidgetHandle UEmmsWidgetHelpers::Button_IconBrush(const FString& LabelText,
 	UEmmsStatics::BeginWidget(UHorizontalBox::StaticClass());
 
 	UEmmsSlotHelpers::VAlign_Center();
+	UEmmsSlotHelpers::Padding_HorizVert(4, 2);
 	Image_Brush(IconBrush, IconSize.X, IconSize.Y, IconColor);
 
 	UEmmsSlotHelpers::VAlign_Center();
