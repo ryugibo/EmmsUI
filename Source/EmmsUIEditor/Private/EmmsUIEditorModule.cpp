@@ -114,6 +114,15 @@ void FEmmsUIEditorModule::UpdatePostCompile()
 						ToolsMenuCategories.Add(CDO->Category, Group);
 					}
 				}
+				
+				FSlateIcon Icon;
+				if (!CDO->Icon.IsNone())
+				{
+					if (!CDO->IconStyleSet.IsNone())
+						Icon = FSlateIcon(CDO->IconStyleSet, CDO->Icon);
+					else
+						Icon = FSlateIcon(FAppStyle::GetAppStyleSetName(), CDO->Icon);
+				}
 
 				FGlobalTabmanager::Get()->RegisterNomadTabSpawner(
 					TabId,
@@ -132,7 +141,7 @@ void FEmmsUIEditorModule::UpdatePostCompile()
 					.SetDisplayName(FText::FromString(CDO->TabTitle))
 					.SetTooltipText(FText::FromString(CDO->ToolTip))
 					.SetGroup(Group.ToSharedRef())
-					.SetIcon(FSlateIcon(FAppStyle::GetAppStyleSetName(), CDO->Icon))
+					.SetIcon(Icon)
 					.SetMenuType(
 						CDO->bShowInToolsMenu ? ETabSpawnerMenuType::Enabled : ETabSpawnerMenuType::Hidden
 					)

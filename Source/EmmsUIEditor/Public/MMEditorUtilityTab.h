@@ -27,6 +27,8 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "Tab")
 	FString Category = TEXT("Scripted Tabs");
 	UPROPERTY(EditDefaultsOnly, Category = "Tab")
+	FName IconStyleSet;
+	UPROPERTY(EditDefaultsOnly, Category = "Tab")
 	FName Icon;
 	UPROPERTY(EditDefaultsOnly, Category = "Tab")
 	bool bShowInToolsMenu = true;
